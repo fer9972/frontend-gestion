@@ -68,7 +68,7 @@ export default {
       //localStorage.setItem('info-publicacion', JSON.stringify(this.lista_publicaciones));
 
       let url = config.url_api;
-      let direccion = url+"info-publicacion";
+      let direccion = url+"info-publicacion/";
       console.log(direccion)
         axios
         .post(direccion, this.publicacion)
@@ -97,8 +97,10 @@ export default {
     //cargar todos los registros de la BD y listarlos
     cargar() {
       let id_listar = localStorage.getItem("documento")
-      let url = "http://localhost:3001/info-publicacion/"+ id_listar;
-      axios.get(url).then(respuesta => {
+
+      let url = config.url_api;
+      let direccion = url+"info-publicacion/" +id_listar;
+      axios.get(direccion).then(respuesta => {
         let data = respuesta.data
         if (data.ok) {
           this.lista_publicaciones = data.info
@@ -120,9 +122,11 @@ export default {
 
     //agregar los nuevos valores a la publicacion editada
     actualizarPublicacionBD() {
+      let url = config.url_api;
       let id_Editar = this.publicacion.id;
+      let direccion = url+"info-publicacion/" + id_Editar;
       console.log(this.id_editar)
-      let direccion = "http://localhost:3001/info-publicacion/" + id_Editar;
+      //let direccion = "http://localhost:3001/info-publicacion/" + id_Editar;
       axios
         .put(direccion, this.publicacion)
         .then((response) => {
@@ -167,7 +171,11 @@ export default {
     //eliminar publicacion de la BD
     eliminarPublicacion({item}) {
       let i = item.id;
-      let direccion = "http://localhost:3001/info-publicacion/" + i;
+
+      let url = config.url_api;
+      let direccion = url + "info-publicacion/" + i;
+      //let direccion = "http://localhost:3001/info-publicacion/" + i;
+
       axios
         .delete(direccion, i)
         .then((response) => {

@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import config from "./config/index";
 
 
 export default {
@@ -37,7 +37,10 @@ export default {
   methods: {
     //metodo para autentificar la persona que se esta logueando para darle acceso y validar el rol
     login() {
-      axios.post("http://localhost:3001/login", {
+      let url = config.url_api;
+      let direccion = url+"login";
+
+      axios.post(direccion, {
         documento: this.autor.documento,
         clave: this.autor.clave
       }).then(res => {
@@ -71,7 +74,9 @@ export default {
 
     //este metodo no se esta utilizando
     verificarRol(id) {
-      let direccion = "http://localhost:3001/registro-autor/rol/" + id;
+      let url = config.url_api;
+      let direccion = url+"registro-autor/rol/" +id;
+      //let direccion = "http://localhost:3001/registro-autor/rol/" + id;
       let token = localStorage.getItem("token");
       axios.get(direccion, { headers: { token } }).then(respuesta => {
         let data = respuesta.data

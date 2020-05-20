@@ -1,5 +1,5 @@
 import { ToastPlugin } from 'bootstrap-vue';
-
+import config from "./config/index";
 /**
  * Aquì se encuentran los metodos para el crud de los seguimientos
  */
@@ -81,7 +81,10 @@ export default {
         crearSeguimiento() {
             this.lista_seguimientos.push(this.seg);
             this.seg.id_propuesta = localStorage.getItem('id_publicacion_evaluar');
-            let direccion = "http://localhost:3001/seguimiento-publicacion";
+
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/";
+            //let direccion = "http://localhost:3001/seguimiento-publicacion";
             axios
                 .post(direccion, this.seg)
                 .then((response) => {
@@ -121,7 +124,11 @@ export default {
         actualizarSeguimientoBD() {
             let id_Editar = this.seg.id;
             console.log(this.seg)
-            let direccion = "http://localhost:3001/seguimiento-publicacion/" + id_Editar;
+
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/" +id_Editar;
+
+            //let direccion = "http://localhost:3001/seguimiento-publicacion/" + id_Editar;
             axios
               .put(direccion, this.seg)
               .then((response) => {
@@ -149,7 +156,10 @@ export default {
         //eliminanos un seguimiento segun el id que se le pase por parametro
         eliminarSeguimiento({item}) {
             let i = item.id;
-            let direccion = "http://localhost:3001/seguimiento-publicacion/" + i;
+
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/" +i;
+            //let direccion = "http://localhost:3001/seguimiento-publicacion/" + i;
             axios
                 .delete(direccion,i)
                 .then((response) => {
@@ -166,8 +176,10 @@ export default {
         cargarSeguimiento() {
             enEdicion = true;
             
-            let url = "http://localhost:3001/seguimiento-publicacion/";
-            axios.get(url).then(respuesta => {
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/";
+            //let url = "http://localhost:3001/seguimiento-publicacion/";
+            axios.get(direccion).then(respuesta => {
               let data = respuesta.data;
               let lista = data.info;
               let l = [];
@@ -186,8 +198,11 @@ export default {
         },
 
         cargar(id){
-            let url = "http://localhost:3001/seguimiento-publicacion/"+id;
-            axios.get(url).then(respuesta => {
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/" +id_listar;
+
+            //let direccion = "http://localhost:3001/seguimiento-publicacion/"+id;
+            axios.get(direccion).then(respuesta => {
               let data = respuesta.data;
               let lista = data.info;
 

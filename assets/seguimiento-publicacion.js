@@ -1,5 +1,5 @@
 import { ToastPlugin } from 'bootstrap-vue';
-
+import config from "./config/index";
 /**
  * Aquì se encuentran los metodos para el crud de los seguimientos
  */
@@ -102,7 +102,10 @@ export default {
         //creamos los seguimientosy lo agregamos a la BD
         crearSeguimiento() {
             this.lista_seguimientos.push(this.seg);
-            let direccion = "http://localhost:3001/seguimiento-publicacion";
+
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/";
+            //let direccion = "http://localhost:3001/seguimiento-publicacion";
             axios
                 .post(direccion, this.seg)
                 .then((response) => {
@@ -147,8 +150,10 @@ export default {
         //editar un seguimiento especifico
         actualizarSeguimientoBD() {
             let id_Editar = this.seg.id;
-            console.log(this.seg)
-            let direccion = "http://localhost:3001/seguimiento-publicacion/" + id_Editar;
+            console.log(this.seg);
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/" +id_Editar;
+            //let direccion = "http://localhost:3001/seguimiento-publicacion/" + id_Editar;
             axios
               .put(direccion, this.seg)
               .then((response) => {
@@ -176,7 +181,9 @@ export default {
         //eliminanos un seguimiento segun el id que se le pase por parametro
         eliminarSeguimiento({item}) {
             let i = item.id;
-            let direccion = "http://localhost:3001/seguimiento-publicacion/" + i;
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/" +i;
+            //let direccion = "http://localhost:3001/seguimiento-publicacion/" + i;
             axios
                 .delete(direccion,i)
                 .then((response) => {
@@ -193,8 +200,10 @@ export default {
         cargarSeguimiento() {
             enEdicion = true;
             
-            let url = "http://localhost:3001/seguimiento-publicacion/";
-            axios.get(url).then(respuesta => {
+            let url = config.url_api;
+            let direccion = url+"seguimiento-publicacion/";
+            //let url = "http://localhost:3001/seguimiento-publicacion/";
+            axios.get(direccion).then(respuesta => {
               let data = respuesta.data;
               let lista = data.info;
               let l = [];
@@ -218,11 +227,13 @@ export default {
         },
 
         cargar(){
-            let url = "http://localhost:3001/seguimiento-publicacion/";
-            axios.get(url).then(respuesta => {
+          let url = config.url_api;
+          let direccion = url+"seguimiento-publicacion/";
+
+            //let url = "http://localhost:3001/seguimiento-publicacion/";
+            axios.get(direccion).then(respuesta => {
               let data = respuesta.data;
               let lista = data.info;
-              let l = [];
 
               if(data.ok){
                 this.lista_seguimientos = lista;
@@ -255,8 +266,11 @@ export default {
 
         //cargar todos los registros de la BD y listarlos
     cargar_publicaciones() {
-        let url = "http://localhost:3001/info-publicacion";
-        axios.get(url).then(respuesta => {
+       let url = config.url_api;
+        let direccion = url+"info-publicacion/";
+
+        //let direccion = "http://localhost:3001/info-publicacion";
+        axios.get(direccion).then(respuesta => {
           let data = respuesta.data
           if (data.ok) {
             this.lista_publicaciones = data.info
@@ -270,8 +284,10 @@ export default {
       },
   
       generarJsonDeSeguimiento({ item }){
-        let url = "http://localhost:3001/info-publicacion/obtener/"+item.id;
-        axios.get(url).then(respuesta => {
+        let url = config.url_api;
+        let direccion = url+"info-publicacion/obtener/" +item.id;
+        //let url = "http://localhost:3001/info-publicacion/obtener/"+item.id;
+        axios.get(direccion).then(respuesta => {
           let data = respuesta.data
           if (data.ok) {
             let s = data.info;
@@ -295,8 +311,11 @@ export default {
       //agregar los nuevos valores a la publicacion editada
       actualizarPublicacionBD() {
         let id_Editar = this.publicacion.id;
-        console.log(this.id_editar)
-        let direccion = "http://localhost:3001/info-publicacion/" + id_Editar;
+        console.log(this.id_editar);
+
+        let url = config.url_api;
+        let direccion = url+"info-publicacion/" +id_Editar;
+        //let direccion = "http://localhost:3001/info-publicacion/" + id_Editar;
         axios
           .put(direccion, this.publicacion)
           .then((response) => {
@@ -341,7 +360,10 @@ export default {
       //eliminar publicacion de la BD
       eliminarPublicacion({item}) {
         let i = item.id;
-        let direccion = "http://localhost:3001/info-publicacion/" + i;
+
+        let url = config.url_api;
+        let direccion = url+"info-publicacion/" +i;
+        //let direccion = "http://localhost:3001/info-publicacion/" + i;
         axios
           .delete(direccion, i)
           .then((response) => {

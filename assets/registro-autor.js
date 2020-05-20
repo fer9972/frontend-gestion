@@ -2,6 +2,7 @@
  * Aquì se encuentran los metodos para el crud de los autores
  */
 const axios = require('axios');
+import config from "./config/index";
 export default {
     data() {
         return {
@@ -42,7 +43,9 @@ export default {
     },
     methods: {
         guardarAutor() {
-            let direccion = "http://localhost:3001/registro-autor";
+            let url = config.url_api;
+            let direccion = url+"registro-autor/";
+            //let direccion = "http://localhost:3001/registro-autor";
             let token = localStorage.getItem("token");
             
             console.log(this.autor)
