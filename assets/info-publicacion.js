@@ -2,11 +2,13 @@
  * Aquì se encuentran los metodos para el crud de la información de la publicación
  */
 const axios = require('axios');
+import config from "./config/index";
 export default {
   data() {
     return {
       enEdicion: false,
       id_publicacion_a_cargar: 0,
+      url:"",
       //en este json se almacena la información agregada de las publicaciones(obraas)
       publicacion: {
         id: "",
@@ -65,9 +67,10 @@ export default {
       this.lista_publicaciones.push(this.publicacion);
       //localStorage.setItem('info-publicacion', JSON.stringify(this.lista_publicaciones));
 
-      let direccion = "http://localhost:3001/info-publicacion";
+      this.url = config.url_api;
+      //let direccion = "http://localhost:3001/info-publicacion";
       axios
-        .post(direccion, this.publicacion)
+        .post(url + "info-publicacion", this.publicacion)
         .then((response) => {
           console.log("Propuesta agregada correctamente");
           alert("la propuesta se agrego correctamente");
