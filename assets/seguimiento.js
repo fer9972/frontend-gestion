@@ -199,7 +199,7 @@ export default {
 
         cargar(id){
             let url = config.url_api;
-            let direccion = url+"seguimiento-publicacion/" +id_listar;
+            let direccion = url+"seguimiento-publicacion/" +id;
 
             //let direccion = "http://localhost:3001/seguimiento-publicacion/"+id;
             axios.get(direccion).then(respuesta => {
