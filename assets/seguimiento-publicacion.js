@@ -128,6 +128,12 @@ export default {
             
         },
 
+        guardarIdPublicacion({ item }){
+            let id = item.id;
+            console.log(id);
+            localStorage.setItem('id_publicacion_evaluar', id);
+        },
+
         //cargar el seguimiento que quiere editar
         cargarSeguimientoEditar({ item }) {
             console.log(this.item)
@@ -212,7 +218,7 @@ export default {
         },
 
         cargar(){
-            let url = "http://localhost:3001/seguimiento-publicacion";
+            let url = "http://localhost:3001/seguimiento-publicacion/";
             axios.get(url).then(respuesta => {
               let data = respuesta.data;
               let lista = data.info;

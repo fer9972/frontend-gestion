@@ -10,6 +10,7 @@ export default {
             enEdicion: false,
             //se guardan todos los seguimientos nuevos que se ingresan 
             seg: {
+                id_propuesta:"",
                 tarea: "",
                 id: "",
                 fecha: "",
@@ -57,7 +58,7 @@ export default {
                     acciones: true
                 }
             ],
-            fields:["id","id_tarea","fecha","comentario","estado","archivo","id_propuesta","acciones"],
+            fields:["id","fecha","comentario","estado","archivo","id_propuesta","acciones"],
             estado: [
                 { value: "aprobado", text: "aprobado" },
                 { value: "en proceso", text: "en proceso" },
@@ -71,14 +72,15 @@ export default {
     //aca apenas se carga la pagina se llama el metodo para listar los seguimientos
     mounted() {
         //this.local()
-        this.cargar()
-        this.cargar_publicaciones()
+        console.log(localStorage.getItem('id_publicacion_evaluar'));
+        this.cargar(localStorage.getItem('id_publicacion_evaluar'));
     },
     methods: {
 
         //creamos los seguimientosy lo agregamos a la BD
         crearSeguimiento() {
             this.lista_seguimientos.push(this.seg);
+            this.seg.id_propuesta = localStorage.getItem('id_publicacion_evaluar');
             let direccion = "http://localhost:3001/seguimiento-publicacion";
             axios
                 .post(direccion, this.seg)
@@ -183,12 +185,11 @@ export default {
             localStorage.setItem('seguimientos', JSON.stringify(this.lista_seguimientos));
         },
 
-        cargar(){
-            let url = "http://localhost:3001/seguimiento-publicacion";
+        cargar(id){
+            let url = "http://localhost:3001/seguimiento-publicacion/"+id;
             axios.get(url).then(respuesta => {
               let data = respuesta.data;
               let lista = data.info;
-              let l = [];
 
               if(data.ok){
                 this.lista_seguimientos = lista;

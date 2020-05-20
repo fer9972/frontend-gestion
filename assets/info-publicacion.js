@@ -67,10 +67,11 @@ export default {
       this.lista_publicaciones.push(this.publicacion);
       //localStorage.setItem('info-publicacion', JSON.stringify(this.lista_publicaciones));
 
-      this.url = config.url_api;
-      //let direccion = "http://localhost:3001/info-publicacion";
-      axios
-        .post(url + "info-publicacion", this.publicacion)
+      let url = config.url_api;
+      let direccion = url+"info-publicacion";
+      console.log(direccion)
+        axios
+        .post(direccion, this.publicacion)
         .then((response) => {
           console.log("Propuesta agregada correctamente");
           alert("la propuesta se agrego correctamente");

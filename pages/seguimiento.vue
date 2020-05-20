@@ -36,14 +36,6 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group id="in-id_propuesta" label="Código de la propuesta:" label-for="id_propuesta">
-          <b-form-input
-            id="id_propuesta"
-            v-model="seg.id_propuesta"
-            placeholder="Código de la propuesta asociada"
-          ></b-form-input>
-        </b-form-group>
-
         <b-form-group id="in-archivo" label="Archivo:" label-for="archivo">
           <b-form-input
             id="archivo"
@@ -72,4 +64,4 @@
   </b-card>
 </template>
 
-<script src="@/assets/seguimiento-publicacion.js" />
+<script src="@/assets/seguimiento.js" />
