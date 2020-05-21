@@ -178,6 +178,7 @@ export default {
         .then((response) => {
           alert("La publicación se editó correctamente");
           console.log(response);
+          this.cargar();
         })
         .catch((error) => {
           console.log(error);
