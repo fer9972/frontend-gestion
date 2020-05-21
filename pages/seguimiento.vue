@@ -1,6 +1,6 @@
 <template>
   <b-card
-    title="Seguimiento de publicacion"
+    title="Seguimiento de publicación"
     img-alt="Image"
     img-top
     tag="article"

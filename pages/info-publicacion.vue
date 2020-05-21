@@ -41,7 +41,7 @@
                     id="facultad"
                     v-model="publicacion.facultad"
                     required
-                    placeholder="facultad"
+                    placeholder="Facultad"
                   ></b-form-input>
                 </b-form-group>
 
@@ -97,7 +97,7 @@
                     v-model="publicacion.aspectos_novedosos"
                     required
                     type="text"
-                    placeholder="aspectos novedosos"
+                    placeholder="Aspectos novedosos"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
@@ -165,33 +165,16 @@
                   ></b-form-input>
                 </b-form-group>
 
-                <b-button type="submit" variant="danger" v-if="!enEdicion">Registrar</b-button>
+                <b-button type="submit" variant="danger" v-if="!enEdicion">Registrar Publicación</b-button>
                 <b-button @click="actualizarPublicacionBD()" variant="danger" v-else>Actualizar datos</b-button>
               </b-form>
-              <!--
-              <b-card class="mt-3" header="Mostrar datos">
-                <pre class="m-0">{{ form }}</pre>
-              </b-card>
-              -->
-              <b-table responsive hover :items="lista_publicaciones" :fields="fields" head-variant="dark">
-              </b-table>
 
-              <b-form action="javascript:void(0)" @submit="cargarUnaPublicacion()">
-                <b-form-group
-                  id="in-id_publicacion_a_cargar"
-                  label="id_publicacion_a_cargar"
-                  label-for="id_publicacion_a_cargar"
-                >
-                  <b-form-input
-                    id="id_publicacion_a_cargar"
-                    v-model="id_publicacion_a_cargar"
-                    required
-                    placeholder="id de publicacion a obtener"
-                  ></b-form-input>
-                </b-form-group>
-                <b-button type="submit" variant="primary">Generar PDF</b-button>
-                <b-button type="submit" href = "http://localhost:3000" variant="primary">Salir</b-button>
-              </b-form>
+              <b-table responsive hover :items="lista_publicaciones" :fields="fields" head-variant="dark">
+                 <template v-slot:cell(acciones)="row">
+                <b-button size="sm"  @click="eliminarPublicacion(row)" class="mr-2">Eliminar</b-button>
+                <b-button size="sm" @click="cargarPublicacionEditar(row)" class="mr-2">Modificar</b-button>
+            </template>
+              </b-table>
             </b-card-body>
           </b-card>
         </b-col>

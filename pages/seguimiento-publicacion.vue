@@ -1,6 +1,6 @@
 <template>
   <b-card
-    title="Seguimiento de publicacion"
+    title="Propuestas De Publicación"
     img-alt="Image"
     img-top
     tag="article"
@@ -11,7 +11,7 @@
   >
     <b-card-body>
       
-      <b-table responsive hover :items="lista_publicaciones" :fields="fields2" head-variant="dark">
+      <b-table responsive hover :items="lista_publicaciones" :fields="fields" head-variant="dark">
             <template v-slot:cell(acciones)="row">
               <b-button size="sm" href="seguimiento" @click="guardarIdPublicacion(row)" class="mr-2">Evaluar</b-button>
               <b-button size="sm" @click="generarJsonDeSeguimiento(row)" class="mr-2">Ver pdf</b-button>

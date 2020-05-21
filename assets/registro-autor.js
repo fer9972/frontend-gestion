@@ -42,10 +42,10 @@ export default {
 
     },
     methods: {
+        //metodo para guardar un autor nuevo
         guardarAutor() {
             let url = config.url_api;
             let direccion = url+"registro-autor/";
-            //let direccion = "http://localhost:3001/registro-autor";
             let token = localStorage.getItem("token");
             
             console.log(this.autor)

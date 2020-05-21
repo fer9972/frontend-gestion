@@ -18,9 +18,48 @@ export default {
         facultad: "",
         tipo_publicacion: "",
         area: "",
+        reseña_autores: "",
+        resumen_obra: "",
+        aspectos_novedosos: "",
+        contribucion_area: "",
+        publico_objetivo: "",
+        ajusta_mision_udem: "",
+        proyecto_asociado: "",
+        observaciones_finales: "",
         acciones: true
       },
-      fields: ["id", "titulo", "facultad", "tipo_publicacion", "area", "estado"],
+
+      fields: [
+        {
+            key: 'id',
+            label: 'Código Propuesta',
+        },
+        {
+            key: 'titulo',
+            label: 'Título',
+        },
+        {
+            key: 'facultad',
+            label: 'Facultad'
+
+        },
+        {
+            key: 'tipo_publicacion',
+            label: 'Tipo de Publicacion'
+
+        },
+        {
+            key: 'area',
+            label: 'Área'
+
+        },
+
+        {
+            key: 'acciones',
+            class: 'center'
+
+        }
+      ],
 
       //En este arreglo se meten todas las publicaciones
       lista_publicaciones: [
@@ -68,18 +107,17 @@ export default {
       //localStorage.setItem('info-publicacion', JSON.stringify(this.lista_publicaciones));
 
       let url = config.url_api;
-      let direccion = url+"info-publicacion/";
+      let direccion = url + "info-publicacion/";
       console.log(direccion)
         axios
         .post(direccion, this.publicacion)
         .then((response) => {
-          console.log("Propuesta agregada correctamente");
-          alert("la propuesta se agrego correctamente");
+          alert("la publicación se agrego correctamente");
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
-          alert("Lo sentimos la propuesta no se pudo agregar correctamente");
+          alert("Lo sentimos la publicación no se pudo agregar correctamente");
         });
 
       this.publicacion = {
@@ -89,6 +127,14 @@ export default {
         facultad: "",
         tipo_publicacion: "",
         area: "",
+        reseña_autores: "",
+        resumen_obra: "",
+        aspectos_novedosos: "",
+        contribucion_area: "",
+        publico_objetivo: "",
+        ajusta_mision_udem: "",
+        proyecto_asociado: "",
+        observaciones_finales: "",
         acciones: true
       };
 
@@ -97,9 +143,8 @@ export default {
     //cargar todos los registros de la BD y listarlos
     cargar() {
       let id_listar = localStorage.getItem("documento")
-
       let url = config.url_api;
-      let direccion = url+"info-publicacion/" +id_listar;
+      let direccion = url + "info-publicacion/" + id_listar;
       axios.get(direccion).then(respuesta => {
         let data = respuesta.data
         if (data.ok) {
@@ -124,19 +169,17 @@ export default {
     actualizarPublicacionBD() {
       let url = config.url_api;
       let id_Editar = this.publicacion.id;
-      let direccion = url+"info-publicacion/" + id_Editar;
+      let direccion = url + "info-publicacion/" + id_Editar;
       console.log(this.id_editar)
-      //let direccion = "http://localhost:3001/info-publicacion/" + id_Editar;
       axios
         .put(direccion, this.publicacion)
         .then((response) => {
-          console.log("Propuesta editada correctamente");
-          alert("La propuesta se edito correctamente");
+          alert("La publicación se editó correctamente");
           console.log(response);
         })
         .catch((error) => {
           console.log(error);
-          alert("Lo sentimos, la publicacion no se pudo editar correctamente");
+          alert("Lo sentimos, la publicación no se pudo editar correctamente");
         });
 
       this.publicacion = {
@@ -145,28 +188,18 @@ export default {
         facultad: "",
         tipo_publicacion: "",
         area: "",
+        reseña_autores: "",
+        resumen_obra: "",
+        aspectos_novedosos: "",
+        contribucion_area: "",
+        publico_objetivo: "",
+        ajusta_mision_udem: "",
+        proyecto_asociado: "",
+        observaciones_finales: "",
         acciones: true
       };
     },
 
-    //Actualiza los datos de una publicacion
-    actualizarPublicacion() {
-      let posicion = this.lista_publicaciones.findIndex(
-        publicacion => publicacion.titulo == this.publicacion.titulo
-      );
-      this.enEdicion = false;
-      this.lista_publicaciones.splice(posicion, 1, this.publicacion);
-      this.publicacion = {
-        id: "",
-        titulo: "",
-        autor: "",
-        facultad: "",
-        tipo_publicacion: "",
-        area: "",
-        acciones: true
-      };
-      localStorage.setItem('info-publicacion', JSON.stringify(this.lista_publicaciones));
-    },
 
     //eliminar publicacion de la BD
     eliminarPublicacion({item}) {
@@ -174,17 +207,15 @@ export default {
 
       let url = config.url_api;
       let direccion = url + "info-publicacion/" + i;
-      //let direccion = "http://localhost:3001/info-publicacion/" + i;
-
       axios
         .delete(direccion, i)
         .then((response) => {
-          console.log("publicacion eliminada correctamente");
-          alert("Publicacion eliminada correctamente");
+          alert("Publicación eliminada correctamente");
           this.cargar();
           console.log(response);
         })
         .catch((error) => {
+          alert("La publicación no se pudo eliminar correctamente");
           console.log(error);
         });
     },
