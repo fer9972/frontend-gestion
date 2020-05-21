@@ -10,16 +10,10 @@ export default {
   },
   mounted() {
     if (this.token_url == true) {
-      // Ingresa a este código si hay un token en url.
-
-      //Asigno la información del token al localstorage
+  
       localStorage.setItem("token", this.token);
-
-      //this.$router.push("PONER AQUÍ LA URL DE LA PÁGINA CUANDO SE REDIRECCION AL HACER LOGIN EXITOSO.");
-      // Por ejemplo
-      //this.$router.push("info-publicacion");
-
-
+      //como no tenemos una pagina home lo redireccionamos al login 
+      this.$router.push("index");
     }
   },
 
