@@ -51,15 +51,20 @@ export default {
         }
         let id_listar = localStorage.getItem("documento");
         let rol = res.data.rol
+        let nombre = res.data.nombre
         localStorage.setItem('token', res.data.info);
+        
 
         //verificamos el rol de la persona que se esta loguenando para redireccionarla a la pagina
         if (rol == 6) {
           this.$router.push("info-publicacion");
+          alert("Bienvenido " + nombre + " estamos felices de que decidas publicar con nosotros")
         } else if (rol == 2) {
           this.$router.push("seguimiento-publicacion");
+          alert("Bienvenido " + nombre + " a nuestro sistema para darle seguimiento a una obra")
         } else if (rol == 1){
           this.$router.push("registrar-autor");
+          alert("Bienvenido " + nombre + " ahora puedes registrar un autor nuevo para que publique con nosotros")
         }
         let mensaje = res.data.mensaje
       }).catch(error => {

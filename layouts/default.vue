@@ -12,9 +12,6 @@
         <div class="title">Gestión Propuestas De Publicación</div>
 
         <b-navbar-toggle target="navbar-toggle-collapse">
-          <a href="principal">
-            <b-icon icon="house-fill" variant="danger" font-scale="2"></b-icon>
-          </a>
            <a href="http://localhost:3000/">
             <b-icon icon="box-arrow-left" variant="danger" font-scale="2"></b-icon>
           </a>
