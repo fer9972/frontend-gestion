@@ -68,8 +68,8 @@
                   label-for="reseña_autores"
                 >
                   <b-form-input
-                    id="reseña_autores"
-                    v-model="publicacion.reseña_autores"
+                    id="resenia_autores"
+                    v-model="publicacion.resenia_autores"
                     required
                     placeholder="Reseña de autores"
                   ></b-form-input>
@@ -80,11 +80,11 @@
                   label-for="resumen_obra"
                 >
                   <b-form-input
-                    id="resumen_obra"
-                    v-model="publicacion.resumen_obra"
+                    id="resumen"
+                    v-model="publicacion.resumen"
                     required
                     type="text"
-                    placeholder="Aquí se adjunta un pdf con el resumen de la obra"
+                    placeholder="Breve resumen de su obra"
                   ></b-form-input>
                 </b-form-group>
                 <b-form-group
@@ -131,8 +131,8 @@
                   label-for="ajusta_mision_udem"
                 >
                   <b-form-input
-                    id="ajusta_mision_udem"
-                    v-model="publicacion.ajusta_mision_udem"
+                    id="forma_ajusta_mision_udem"
+                    v-model="publicacion.forma_ajusta_mision_udem"
                     required
                     type="text"
                     placeholder="Forma en que se ajusta a la misión de la udem"
@@ -144,8 +144,8 @@
                   label-for="proyecto_asociado"
                 >
                   <b-form-input
-                    id="proyecto_asociado"
-                    v-model="publicacion.proyecto_asociado"
+                    id="datos_proyecto_asociado"
+                    v-model="publicacion.datos_proyecto_asociado"
                     required
                     type="text"
                     placeholder="Datos del proyecto al que se asocia"

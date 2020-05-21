@@ -18,13 +18,13 @@ export default {
         facultad: "",
         tipo_publicacion: "",
         area: "",
-        reseña_autores: "",
-        resumen_obra: "",
+        resenia_autores: "",
+        resumen: "",
         aspectos_novedosos: "",
         contribucion_area: "",
         publico_objetivo: "",
-        ajusta_mision_udem: "",
-        proyecto_asociado: "",
+        forma_ajusta_mision_udem: "",
+        datos_proyecto_asociado: "",
         observaciones_finales: "",
         acciones: true
       },
@@ -108,6 +108,7 @@ export default {
 
       let url = config.url_api;
       let direccion = url + "info-publicacion/";
+      console.log(this.publicacion)
       console.log(direccion)
         axios
         .post(direccion, this.publicacion)
@@ -122,18 +123,19 @@ export default {
 
       this.publicacion = {
         id: "",
-        id_autor: "",
         titulo: "",
+        id_autor: "",
+        autor: "",
         facultad: "",
         tipo_publicacion: "",
         area: "",
-        reseña_autores: "",
-        resumen_obra: "",
+        resenia_autores: "",
+        resumen: "",
         aspectos_novedosos: "",
         contribucion_area: "",
         publico_objetivo: "",
-        ajusta_mision_udem: "",
-        proyecto_asociado: "",
+        forma_ajusta_mision_udem: "",
+        datos_proyecto_asociado: "",
         observaciones_finales: "",
         acciones: true
       };
@@ -185,16 +187,18 @@ export default {
       this.publicacion = {
         id: "",
         titulo: "",
+        id_autor: "",
+        autor: "",
         facultad: "",
         tipo_publicacion: "",
         area: "",
-        reseña_autores: "",
-        resumen_obra: "",
+        resenia_autores: "",
+        resumen: "",
         aspectos_novedosos: "",
         contribucion_area: "",
         publico_objetivo: "",
-        ajusta_mision_udem: "",
-        proyecto_asociado: "",
+        forma_ajusta_mision_udem: "",
+        datos_proyecto_asociado: "",
         observaciones_finales: "",
         acciones: true
       };
