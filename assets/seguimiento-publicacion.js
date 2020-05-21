@@ -97,7 +97,7 @@ export default {
       let datos = this.generarJsonDeSeguimiento({item});
 
       let url = config.url_api;
-      let direccion = url + "pdf/6181";
+      let direccion = url + "pdf/" + item.id;
       //let datos = {
        // nombre: "Santiago",
        // people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
