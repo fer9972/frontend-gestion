@@ -92,13 +92,16 @@ export default {
       });
 
     },
-    TIENEQUEFUNCIONAR(){
+    TIENEQUEFUNCIONAR({item}){
+      
+      let datos = this.generarJsonDeSeguimiento({item});
+
       let url = config.url_api;
-      let direccion = url + "pdf";
-      let datos = {
-        nombre: "Santiago",
-        people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
-      };
+      let direccion = url + "pdf/6181";
+      //let datos = {
+       // nombre: "Santiago",
+       // people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
+      //};
       axios({
         method:'get',
         url:direccion,
@@ -112,14 +115,17 @@ export default {
           link.click();
       });
     },
-    TIENEQUEFUNCIONAR1(){
-      let datos = {
-           nombre: "Santiago",
-           people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
-         };
+    TIENEQUEFUNCIONAR1({item}){
+      let datos = this.generarJsonDeSeguimiento({item});
+      let id = datos[0].id;
+      let titulo = datos[0].titulo;
+
+      console.log("id obra: "+ id + "titulo: "+titulo);
+
       let url = config.url_api;
-      let direccion = url+"pdf";
-      axios.get(direccion,datos).then(respuesta => {
+      let direccion = url+"pdf/"+id+"/"+titulo;
+
+      axios.get(direccion).then(respuesta => {
         let data = respuesta.data
         console.log("Respuesta:" + respuesta);
         console.log("DATA:" + data);
@@ -141,8 +147,9 @@ export default {
         let data = respuesta.data
         if (data.ok) {
           let s = data.info;
-          console.log(s);
-          return s;
+          console.log(s[0]);
+          return s[0];
+
         }
         this.mensaje = data.mensaje;
         console.log(respuesta);
