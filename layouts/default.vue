@@ -12,7 +12,7 @@
         <div class="title">Gestión Propuestas De Publicación</div>
 
         <b-navbar-toggle target="navbar-toggle-collapse">
-           <a href="http://localhost:3000/">
+           <a href="https://gestion-publicacion-frontend.herokuapp.com/">
             <b-icon icon="box-arrow-left" variant="danger" font-scale="2"></b-icon>
           </a>
         </b-navbar-toggle>
