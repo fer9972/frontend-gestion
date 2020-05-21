@@ -92,7 +92,47 @@ export default {
       });
 
     },
-
+    TIENEQUEFUNCIONAR(){
+      let url = config.url_api;
+      let direccion = url + "pdf";
+      let datos = {
+        nombre: "Santiago",
+        people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
+      };
+      axios({
+        method:'get',
+        url:direccion,
+        responseType:'arraybuffer'
+      })
+      .then(function(response) {
+          let blob = new Blob([response.data], { type:   'application/pdf' } );
+          let link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'Report.pdf';
+          link.click();
+      });
+    },
+    TIENEQUEFUNCIONAR1(){
+      let datos = {
+           nombre: "Santiago",
+           people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
+         };
+      let url = config.url_api;
+      let direccion = url+"pdf";
+      axios.get(direccion,datos).then(respuesta => {
+        let data = respuesta.data
+        console.log("Respuesta:" + respuesta);
+        console.log("DATA:" + data);
+        if (data.ok) {
+          let s = data.info;
+          console.log(s);
+        }
+        this.mensaje = data.mensaje;
+        console.log(respuesta);
+      }).catch(error => {
+        console.log(this.mensaje = "Ha ocurrido un error")
+      });
+    },
     //metodo para traer un Jso con la informacion de una obra 
     generarJsonDeSeguimiento({ item }) {
       let url = config.url_api;
