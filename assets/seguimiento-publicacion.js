@@ -92,16 +92,11 @@ export default {
       });
 
     },
-    TIENEQUEFUNCIONAR({item}){
-      
-      let datos = this.generarJsonDeSeguimiento({item});
-
+    //metodo para generar el pdf con la informacion de la obra que se va a evaluar
+    generarPDF({item}){
+     // let datos = this.generarJsonDeSeguimiento({item});
       let url = config.url_api;
       let direccion = url + "pdf/" + item.id;
-      //let datos = {
-       // nombre: "Santiago",
-       // people: ["Yehuda Katz", "Alan Johnson", "Charles Jolley"],
-      //};
       axios({
         method:'get',
         url:direccion,
@@ -115,32 +110,9 @@ export default {
           link.click();
       });
     },
-    TIENEQUEFUNCIONAR1({item}){
-      let datos = this.generarJsonDeSeguimiento({item});
-      let id = datos[0].id;
-      let titulo = datos[0].titulo;
 
-      console.log("id obra: "+ id + "titulo: "+titulo);
-
-      let url = config.url_api;
-      let direccion = url+"pdf/"+id+"/"+titulo;
-
-      axios.get(direccion).then(respuesta => {
-        let data = respuesta.data
-        console.log("Respuesta:" + respuesta);
-        console.log("DATA:" + data);
-        if (data.ok) {
-          let s = data.info;
-          console.log(s);
-        }
-        this.mensaje = data.mensaje;
-        console.log(respuesta);
-      }).catch(error => {
-        console.log(this.mensaje = "Ha ocurrido un error")
-      });
-    },
     //metodo para traer un Jso con la informacion de una obra 
-    generarJsonDeSeguimiento({ item }) {
+   /* generarJsonDeSeguimiento({ item }) {
       let url = config.url_api;
       let direccion = url + "info-publicacion/obtener/" + item.id;
       axios.get(direccion).then(respuesta => {
@@ -156,7 +128,7 @@ export default {
       }).catch(error => {
         console.log(this.mensaje = "Ha ocurrido un error")
       });
-    },
+    },*/
 
     //eliminar publicacion de la BD
     eliminarPublicacion({ item }) {
