@@ -14,7 +14,7 @@
       <b-table responsive hover :items="lista_publicaciones" :fields="fields" head-variant="dark">
             <template v-slot:cell(acciones)="row">
               <b-button size="sm" href="seguimiento" @click="guardarIdPublicacion(row)" class="mr-2">Evaluar</b-button>
-              <b-button size="sm" @click="generarJsonDeSeguimiento(row)" class="mr-2">Ver pdf</b-button>
+              <b-button size="sm" @click="TIENEQUEFUNCIONAR()" class="mr-2">Ver pdf</b-button>
             </template>
       </b-table>
 
