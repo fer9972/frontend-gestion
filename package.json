@@ -16,7 +16,7 @@
     "bootstrap-vue": "^2.0.0",
     "file-saver": "^2.0.2",
     "fs": "0.0.1-security",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "jsreport-chrome-pdf": "^1.8.0",
     "nuxt": "^2.0.0",
     "path": "^0.12.7",
